@@ -668,6 +668,17 @@ Singleton {
         onNotification: notif => {
             notif.tracked = true;
 
+            if (notif.key !== "") {
+                console.log(`TEST: ${notif.key}`);
+                for (const p of popups.slice()) {
+                    if (p.notification.key === notif.key) {
+                        p.notification = notif;
+                        p.timer.restart();
+                        return;
+                    }
+                }
+            }
+
             const policy = _evaluateNotificationPolicy(notif);
             if (policy.drop) {
                 try {

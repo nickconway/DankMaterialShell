@@ -173,6 +173,8 @@ PanelWindow {
             return;
         if (notificationData.timer)
             notificationData.timer.stop();
+        if (notificationData?.notification?.transient)
+            NotificationService.dismissNotification(notificationData);
         notificationData.popup = false;
         // Fallback if wrapperConn.onPopupChanged doesn't reach startExit.
         Qt.callLater(() => {

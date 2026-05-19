@@ -797,6 +797,9 @@ Singleton {
                 if (interval > 0) {
                     wrapper.popup = false;
                 }
+                if (wrapper.notification.transient) {
+                    wrapper.notification.dismiss();
+                }
             }
         }
 

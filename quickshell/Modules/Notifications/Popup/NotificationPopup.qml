@@ -953,6 +953,9 @@ PanelWindow {
                 onClicked: {
                     if (notificationData && !win.exiting)
                         notificationData.popup = false;
+
+                    if (notificationData && notificationData.notification && notificationData.notification.transient)
+                        NotificationService.dismissNotification(notificationData);
                 }
             }
 
